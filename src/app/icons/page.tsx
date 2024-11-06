@@ -1,34 +1,54 @@
-import React from 'react'
+"use client";
+import React, { useContext } from "react";
 import { iconsByVersion } from "@/utils/icons";
-import Link from 'next/link';
-import ListIcons from '@/components/ListIcons';
+import Link from "next/link";
+import ListIcons from "@/components/ListIcons";
+import { allIconsSorted } from "@/utils/icons";
+import { BvIcon } from "bevi-icon";
+import { IconContext } from "./layout";
 
 const Icons = () => {
-  return (
-    <main className='ds-flex flow-col-nw gap-lg p-block-16'>
-      <section>
-        <div className="bv-container-md">
-          <h1>Hello World</h1>
-        </div>
-      </section>
-      {/* <section>
-        <div className="bv-container-md">
-          <div className="ds-flex flow-col-nw gap-xs">
-            {icons.map((version, index) => version.icons.map((icon, index) => (
-              <Link key={index} href={`/icons/${icon.name}`} scroll={false}>
-                {icon.name}
-              </Link>
-            )))}
-          </div>
-        </div>
-      </section> */}
-      <section>
-        <div className="bv-container-md">
-          <ListIcons />
-        </div>
-      </section>
-    </main>
-  )
-}
+  const iconContext = useContext(IconContext);
 
-export default Icons
+  // Agrupa os ícones por letra inicial
+  const groupedIcons = allIconsSorted.reduce((acc, icon) => {
+    const firstLetter = icon.charAt(0).toUpperCase();
+    if (!acc[firstLetter]) {
+      acc[firstLetter] = [];
+    }
+    acc[firstLetter].push(icon);
+    return acc;
+  }, {} as Record<string, string[]>);
+
+  return (
+    <div className="bv-container-lg">
+      <div>
+        {Object.entries(groupedIcons).map(([letter, icons]) => (
+          <section
+            key={letter}
+            className="ps-relative ds-flex flow-row-nw gap-xs"
+          >
+            <h3 id={letter} className="ps-sticy p-block-10">
+              {letter}
+            </h3>
+            <div className="p-block-10 ds-grid grid-tpl-col-06">
+              {icons.map((icon, index) => (
+                <Link
+                  key={`${letter}-${index}`}
+                  href={`/icons/${icon}`}
+                  scroll={false}
+                  onClick={() => iconContext.setDrawerOpen(true)}
+                  className="ds-flex-center p-block-04 p-inline-02"
+                >
+                  <BvIcon name={icon} size={4} />
+                </Link>
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Icons;

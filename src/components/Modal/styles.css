@@ -3,4 +3,8 @@
   & .modal-close{
     background-color: hsla(0, 0%, 0%, 0.75);
   }
+
+  & .modal-content{
+    border-radius: 32px 32px 0 0;
+  }
 }

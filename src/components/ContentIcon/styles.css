@@ -1,0 +1,13 @@
+.content-icon{
+  & .viewport{
+    --_viewport-size: 16rem;
+    --_icon-size: calc(var(--_viewport-size) - 4rem);
+    width: var(--_viewport-size);
+    height: var(--_viewport-size);
+
+    & .icon{
+      width: var(--_icon-size);
+      height: var(--_icon-size);
+    }
+  }
+}
