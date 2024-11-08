@@ -1,8 +1,8 @@
 import { useContext, useEffect } from "react";
 import { BvIcon } from "bevi-icon";
 import { Variants } from "@/types/icons";
-import "./styles.css";
 import { useIconVariant } from "@/hooks/useIconVariant";
+import "./styles.css";
 
 export const SwitchVariant = () => {
   const { variant, setVariant } = useIconVariant();
@@ -16,7 +16,7 @@ export const SwitchVariant = () => {
           type="button"
           data-state={variant === v ? "active" : "inactive"}
           onClick={() => setVariant(v)}
-          className="btn-switch-variant p-block-02 p-inline-04"
+          className="btn-switch-variant p-block-02 p-inline-04 radius-xs"
         >
           <BvIcon
             name="cube"

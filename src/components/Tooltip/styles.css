@@ -1,0 +1,12 @@
+.tooltip{
+  & .message{
+    max-width: 256px;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    & span{
+      word-break: keep-all;
+    }
+  }
+}
