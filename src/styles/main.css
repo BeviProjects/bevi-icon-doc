@@ -58,3 +58,7 @@ main{
     background-color: hsl(0, 0%, 80%);
   }
 }
+
+.letter-box{
+  width: 3rem
+}

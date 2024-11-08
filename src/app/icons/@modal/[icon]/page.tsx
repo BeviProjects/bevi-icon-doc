@@ -1,9 +1,8 @@
-import { Suspense, useContext } from "react";
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import Loading from "./loading";
 import { ContentIcon } from "@/components/ContentIcon";
 import { allIconsSorted } from "@/utils/icons";
-import { IconContext } from "../../layout";
 
 export async function generateStaticParams() {
   return allIconsSorted.map((iconName) => ({

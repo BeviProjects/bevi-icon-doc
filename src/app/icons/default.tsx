@@ -1,13 +1,13 @@
 "use client";
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import Page from "./page";
-import { IconContext } from "./layout";
+import { useDrawer } from "@/hooks/useDrawer";
 
 const Default = () => {
-  const iconContext = useContext(IconContext);
+  const { setState } = useDrawer();
 
   useEffect(() => {
-    iconContext.setDrawerOpen(true);
+    setState(true);
   }, []);
 
   return <Page />;

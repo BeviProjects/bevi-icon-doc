@@ -2,55 +2,42 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { BvIcon } from "bevi-icon";
 import "./styles.css";
-import { SwitchVariant } from "../SwitchVariant";
 import { Variants } from "@/types/icons";
-import useCopySvgToClipboard from "@/hook/useCopySvgToClipboard";
-import { IconContext } from "@/app/icons/layout";
+import { useDrawer } from "@/hooks/useDrawer";
+import { useIconVariant } from "@/hooks/useIconVariant";
+import { SwitchVariant } from "../SwitchVariant";
 
 type ContentIconProps = {
   iconName: string;
 };
 
 export const ContentIcon = ({ iconName }: ContentIconProps) => {
-  const [variantState, setVariantState] = useState<Variants>("solid");
-  const iconRef = useRef<SVGSVGElement | null>(null);
-  const copySvgToClipboard = useCopySvgToClipboard();
-  const iconContext = useContext(IconContext);
+  const { setState } = useDrawer();
+  const { variant } = useIconVariant();
 
   useEffect(() => {
-    iconContext.setDrawerOpen(true);
+    setState(true);
   }, []);
 
   return (
-    <div className="content-icon ds-flex flow-row-nw gap-xs">
-      <div className="viewport ds-flex-center bgc-gray-01 radius-md">
-        <BvIcon
-          ref={iconRef}
-          name={iconName}
-          variant={variantState}
-          className={`icon color-${
-            variantState === "light" ? "primary-02" : "primary-01"
-          }`}
-        />
+    <div className="content-icon ds-flex flow-col-nw gap-md">
+      <div className="w-100">
+        <h3>{iconName}</h3>
       </div>
-      <div className="flex-bgs">
-        <SwitchVariant state={variantState} setState={setVariantState} />
-        <button
-          type="button"
-          onClick={() => copySvgToClipboard(iconRef.current)}
-        >
-          Copiar SVG
-        </button>
+      <div className="ds-flex flow-row-nw gap-xs">
+        <div className="viewport ds-flex-center bgc-gray-01 radius-md">
+          <BvIcon
+            name={iconName}
+            variant={variant}
+            className={`icon color-${
+              variant === "light" ? "primary-02" : "primary-01"
+            }`}
+          />
+        </div>
+        <div className="flex-bgs">
+          <SwitchVariant />
+        </div>
       </div>
-    </div>
-  );
-};
-
-export const Skeleton = () => {
-  return (
-    <div className="content-icon ds-flex flow-row-nw gap-xs">
-      <div className="viewport ds-flex-center bgc-gray-01 radius-md"></div>
-      <div className="flex-bgs"></div>
     </div>
   );
 };

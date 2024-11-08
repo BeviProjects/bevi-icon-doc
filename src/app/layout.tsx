@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Nunito_Sans } from 'next/font/google'
-import '@/styles/main.css'
+// import { Nunito_Sans } from 'next/font/google'
+import "@/styles/main.css";
 
-const nunitoSans = Nunito_Sans({
-  subsets: ['latin'],
-  display: 'swap',
-})
+// const nunitoSans = Nunito_Sans({
+//   subsets: ['latin'],
+//   display: 'swap',
+// })
 
 export const metadata: Metadata = {
   title: "Bevi Icon Documentation",
@@ -19,11 +19,10 @@ const RootLayout = ({
 }>) => {
   return (
     <html lang="pt-BR">
-      <body className={`${nunitoSans.className}`}>
-        {children}
-      </body>
+      {/* <body className={`${nunitoSans.className}`}> */}
+      <body>{children}</body>
     </html>
   );
-}
+};
 
-export default RootLayout
+export default RootLayout;

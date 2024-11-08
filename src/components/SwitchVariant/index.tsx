@@ -1,34 +1,32 @@
-import React, { useState } from 'react'
-import { Variants } from '@/types/icons'
-import { BvIcon } from 'bevi-icon'
-import './styles.css'
+import { useContext, useEffect } from "react";
+import { BvIcon } from "bevi-icon";
+import { Variants } from "@/types/icons";
+import "./styles.css";
+import { useIconVariant } from "@/hooks/useIconVariant";
 
-type SwitchVariantProps = {
-  state: Variants
-  setState: (state: Variants) => void
-}
-
-export const SwitchVariant = ({state, setState}:SwitchVariantProps) => {
-  const variants = ['solid', 'duo', 'dark', 'light']
+export const SwitchVariant = () => {
+  const { variant, setVariant } = useIconVariant();
+  const variants = ["solid", "duo", "dark", "light"] as Variants[];
 
   return (
-    <div className='ds-flex-end gap-xs'>
-      {variants.map((variant, index) => (
-        <button 
-          key={`${variant}-${index}`} 
-          type='button'
-          data-state={state === variant ? 'active' : 'inactive'}
-          onClick={() => setState(variant as Variants)}
-          className='btn-switch-variant p-block-02 p-inline-04'
+    <div className="ds-flex-end gap-xs">
+      {variants.map((v, index) => (
+        <button
+          key={`${v}-${index}`}
+          type="button"
+          data-state={variant === v ? "active" : "inactive"}
+          onClick={() => setVariant(v)}
+          className="btn-switch-variant p-block-02 p-inline-04"
         >
-          <BvIcon 
-            name='cube' 
-            size={1.5} 
-            variant={variant} 
-            className={`color-${variant === 'light' ? 'primary-02' : 'primary-01'}`}/>
-          {variant}
+          <BvIcon
+            name="cube"
+            size={1.5}
+            variant={v}
+            className={`color-${v === "light" ? "primary-02" : "primary-01"}`}
+          />
+          {v}
         </button>
       ))}
     </div>
-  )
-}
+  );
+};

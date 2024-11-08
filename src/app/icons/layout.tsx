@@ -1,13 +1,10 @@
 "use client";
 import { ReactNode, useState } from "react";
-import { Drawer } from "vaul";
 import { useRouter } from "next/navigation";
-import { createContext } from "react";
-export const IconContext = createContext({
-  variant: "solid",
-  drawerOpen: false,
-  setDrawerOpen: (drawerOpen: boolean) => {},
-});
+import { Drawer } from "vaul";
+import { DrawerProvider } from "@/contexts/DrawerContext";
+import { IconVariantProvider } from "@/contexts/IconVariantContext";
+import { SwitchVariant } from "@/components/SwitchVariant";
 
 type IconLayoutProps = {
   children: ReactNode;
@@ -15,8 +12,8 @@ type IconLayoutProps = {
 };
 
 const IconLayout = ({ children, modal }: IconLayoutProps) => {
-  const [drawerOpen, setDrawerOpen] = useState(false);
   const router = useRouter();
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const handleDrawerClose = () => {
     router.push("/icons");
@@ -30,42 +27,39 @@ const IconLayout = ({ children, modal }: IconLayoutProps) => {
   };
 
   return (
-    <IconContext.Provider
-      value={{
-        variant: "solid",
-        drawerOpen: drawerOpen,
-        setDrawerOpen: setDrawerOpen,
-      }}
-    >
-      <main
-        className="ds-flex flow-col-nw gap-lg p-block-16"
-        data-vaul-drawer-wrapper="true"
-      >
-        <section>
-          <div className="bv-container-lg ds-flex flow-row-nw justify-between">
-            <span>search bar</span>
-            <span>Select theme</span>
-          </div>
-        </section>
-        <Drawer.Root
-          open={drawerOpen}
-          onOpenChange={handleOpenChange}
-          shouldScaleBackground
+    <DrawerProvider state={drawerOpen} setState={setDrawerOpen}>
+      <IconVariantProvider>
+        <main
+          className="ds-flex flow-col-nw gap-xl p-block-16"
+          data-vaul-drawer-wrapper="true"
         >
-          {children}
-
-          <Drawer.Portal>
-            <Drawer.Overlay className="ps-fixed inset-00 bg-black-40" />
-            <Drawer.Content className="ps-fixed bottom-00 left-00 right-00 bgc-primary-03 pt-06 pb-16">
-              <Drawer.Handle />
-              <div className="bv-container-sm pt-06 ds-flex-start flow-col-nw gap-sm">
-                {modal}
-              </div>
-            </Drawer.Content>
-          </Drawer.Portal>
-        </Drawer.Root>
-      </main>
-    </IconContext.Provider>
+          <section>
+            <div className="bv-container-lg ds-flex flow-row-nw justify-between">
+              <span>search bar</span>
+              <SwitchVariant />
+            </div>
+          </section>
+          <div className="bv-container-lg ds-flex flow-col-nw gap-sm">
+            {children}
+          </div>
+          <Drawer.Root
+            open={drawerOpen}
+            onOpenChange={handleOpenChange}
+            shouldScaleBackground
+          >
+            <Drawer.Portal>
+              <Drawer.Overlay className="ps-fixed inset-00 bg-black-40" />
+              <Drawer.Content className="ps-fixed bottom-00 left-00 right-00 bgc-primary-03 pt-06 pb-16">
+                <Drawer.Handle />
+                <div className="bv-container-sm pt-06 ds-flex-start flow-col-nw gap-sm">
+                  {modal}
+                </div>
+              </Drawer.Content>
+            </Drawer.Portal>
+          </Drawer.Root>
+        </main>
+      </IconVariantProvider>
+    </DrawerProvider>
   );
 };
 
