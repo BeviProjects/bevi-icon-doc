@@ -1,5 +1,3 @@
-import type { typeIconsVersion, typeAllIcons } from "@/types/icons";
-
 export const v1_0 = [
   {
     id: "accountBox",

@@ -11,13 +11,13 @@ const ListIcons = () => {
 
   // Agrupa os ícones por letra inicial
   const groupedIcons = allIconsSorted.reduce((acc, icon) => {
-    const firstLetter = icon.charAt(0).toUpperCase();
+    const firstLetter = icon.id.charAt(0).toUpperCase();
     if (!acc[firstLetter]) {
       acc[firstLetter] = [];
     }
     acc[firstLetter].push(icon);
     return acc;
-  }, {} as Record<string, string[]>);
+  }, {} as Record<string, typeof allIconsSorted>);
 
   return (
     <div>
@@ -43,7 +43,7 @@ const ListIcons = () => {
                   className="ds-flex-center p-block-04 p-inline-02"
                 >
                   <BvIcon
-                    name={icon}
+                    name={icon.id}
                     variant={variantState}
                     size={4}
                     className={`color-${
