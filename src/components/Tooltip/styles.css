@@ -1,9 +1,12 @@
 .tooltip{
-  & .message{
-    max-width: 256px;
-    bottom: 100%;
+  & .anchor{
+    bottom: calc(100% + 0.25rem);
     left: 50%;
     transform: translateX(-50%);
+  }
+
+  & .message{
+    max-width: 256px;
     
     & span{
       word-break: keep-all;

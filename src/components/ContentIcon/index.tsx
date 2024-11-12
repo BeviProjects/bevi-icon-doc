@@ -8,6 +8,7 @@ import { SwitchVariant } from "@/components/SwitchVariant";
 import { allIconsSorted } from "@/utils/icons";
 import "./styles.css";
 import { Tooltip } from "../Tooltip";
+import { CopyToClipboard } from "../CopyToClipboard";
 
 type ContentIconProps = {
   iconName: string;
@@ -38,12 +39,12 @@ export const ContentIcon = ({ iconName }: ContentIconProps) => {
       {searchResult ? (
         <>
           <div className="w-100 ds-flex flow-row-nw align-start justify-between">
-            <Tooltip message="Vamos ver em" startActive>
+            <CopyToClipboard toCopy={searchResult.id}>
               <h3>{searchResult.name}</h3>
-            </Tooltip>
+            </CopyToClipboard>
             <SwitchVariant />
           </div>
-          <div className="ds-flex flow-row-nw gap-xs">
+          <div className="ds-flex flow-row-nw gap-xl">
             <div className="viewport ds-flex-center bgc-gray-01 radius-md">
               <BvIcon
                 name={searchResult.id}
