@@ -30,7 +30,7 @@ const IconLayout = ({ children, modal }: IconLayoutProps) => {
     <DrawerProvider state={drawerOpen} setState={setDrawerOpen}>
       <IconVariantProvider>
         <main
-          className="ds-flex flow-col-nw gap-xl p-block-16"
+          className="ds-flex flow-col-nw gap-xl"
           data-vaul-drawer-wrapper="true"
         >
           <section>

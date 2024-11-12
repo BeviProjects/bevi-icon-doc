@@ -1,0 +1,30 @@
+.header{
+  & nav{
+    background-color: hsla(0,0%,95%,.95);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+
+    & .item{
+      &::before{
+        z-index: -1;
+        content: "";
+        position: absolute;
+        inset: 0;
+        transform: scale(0.9);
+        opacity: 0;
+        border-radius: 8px;
+        background-color: hsla(0, 0%, 64%, .32);
+        transition-property: transform, opacity;
+        transition-duration: 0.2s;
+        transition-timing-function: ease-in-out;
+      }
+      
+      &:hover{
+        &::before{
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+    }
+  }
+}

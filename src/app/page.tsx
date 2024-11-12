@@ -1,9 +1,9 @@
 import { Modal } from "@/components/Modal";
 import Link from "next/link";
 
-const Home =  () => {
+const Home = () => {
   return (
-    <main className='ds-flex flow-col-nw gap-lg p-block-16'>
+    <main className="ds-flex flow-col-nw gap-lg">
       <section>
         <div className="bv-container-md">
           <h1>Hello World</h1>
@@ -11,9 +11,7 @@ const Home =  () => {
       </section>
       <section>
         <div className="bv-container-md">
-          <Link href="/icons">
-            Icons
-          </Link>
+          <Link href="/icons">Icons</Link>
         </div>
       </section>
       {/* <section>
@@ -23,6 +21,6 @@ const Home =  () => {
       </section> */}
     </main>
   );
-}
+};
 
-export default Home
+export default Home;
