@@ -48,8 +48,8 @@ const IconLayout = ({ children, modal }: IconLayoutProps) => {
             shouldScaleBackground
           >
             <Drawer.Portal>
-              <Drawer.Overlay className="ps-fixed inset-00 bg-black-40" />
-              <Drawer.Content className="ps-fixed bottom-00 left-00 right-00 bgc-primary-03 pt-06 pb-16">
+              <Drawer.Overlay className="ps-fixed inset-00 bg-black-40 z-index-07" />
+              <Drawer.Content className="ps-fixed bottom-00 left-00 right-00 bgc-primary-03 pt-06 pb-16 z-index-08">
                 <Drawer.Handle />
                 <div className="bv-container-sm pt-06 ds-flex-start flow-col-nw gap-sm">
                   {modal}

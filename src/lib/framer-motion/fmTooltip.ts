@@ -1,4 +1,4 @@
-import type { Transition, Variants } from "framer-motion";
+import type { Transition, Variants } from "motion/react";
 
 export const messageTooltipVariants: Variants = {
   hidden: { opacity: 0, y: 8 },

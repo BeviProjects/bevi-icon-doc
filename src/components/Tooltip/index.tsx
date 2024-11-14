@@ -3,7 +3,7 @@ import {
   messageTooltipTransition,
   messageTooltipVariants,
 } from "@/lib/framer-motion/fmTooltip";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import React, { ReactNode, useState } from "react";
 import "./styles.css";
 
