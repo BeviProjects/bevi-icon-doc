@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 // import { Nunito_Sans } from 'next/font/google'
 import "@/styles/main.css";
 import { Header } from "@/components/Header";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
+import { DrawerProvider } from "@/contexts/DrawerContext";
 
 // const nunitoSans = Nunito_Sans({
 //   subsets: ['latin'],
@@ -23,7 +25,7 @@ const RootLayout = ({
       {/* <body className={`${nunitoSans.className}`}> */}
       <body>
         <Header />
-        {children}
+        <NuqsAdapter>{children}</NuqsAdapter>
       </body>
     </html>
   );

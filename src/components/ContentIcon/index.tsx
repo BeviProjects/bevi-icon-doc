@@ -9,6 +9,7 @@ import { allIconsSorted } from "@/utils/icons";
 import "./styles.css";
 import { Tooltip } from "../Tooltip";
 import { CopyToClipboard } from "../CopyToClipboard";
+import { Drawer } from "vaul";
 
 type ContentIconProps = {
   iconName: string;
@@ -21,13 +22,10 @@ type IconData = {
 };
 
 export const ContentIcon = ({ iconName }: ContentIconProps) => {
-  const { setState } = useDrawer();
   const { variant } = useIconVariant();
   const [searchResult, setSearchResult] = useState<IconData | null>(null);
 
   useEffect(() => {
-    setState(true);
-
     // Busca o ícone pelo id e atualiza o estado
     const foundIcon =
       allIconsSorted.find((icon) => icon.id === iconName) || null;
@@ -40,7 +38,10 @@ export const ContentIcon = ({ iconName }: ContentIconProps) => {
         <>
           <div className="w-100 ds-flex flow-row-nw align-start justify-between">
             <CopyToClipboard toCopy={searchResult.id}>
-              <h3>{searchResult.name}</h3>
+              <Drawer.Title>{searchResult.name}</Drawer.Title>
+              <Drawer.Description className="ds-none">
+                Icon {searchResult.name}
+              </Drawer.Description>
             </CopyToClipboard>
             <SwitchVariant />
           </div>

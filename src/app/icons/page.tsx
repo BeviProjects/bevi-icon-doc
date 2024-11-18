@@ -1,15 +1,24 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { allIconsSorted } from "@/utils/icons";
 import Link from "next/link";
 import { BvIcon } from "bevi-icon";
 import { useDrawer } from "@/hooks/useDrawer";
 import { useIconVariant } from "@/hooks/useIconVariant";
 import { FadeIn } from "@/components/FadeIn";
+import { useQueryState } from "nuqs";
 
 const Icons = () => {
   const { variant } = useIconVariant();
-  const { setState } = useDrawer();
+  const { openDrawer } = useDrawer();
+  const [icon, setIcon] = useQueryState("icon");
+
+  // Método para abrir o Drawer
+  const handleOpenDrawer = (id: string) => {
+    // Abre o Drawer e define o ID na URL
+    openDrawer(id);
+    setIcon(id);
+  };
 
   // Agrupa os ícones por letra inicial do nome
   const groupedIcons = allIconsSorted.reduce((acc, icon) => {
@@ -24,27 +33,24 @@ const Icons = () => {
   return (
     <>
       {Object.entries(groupedIcons).map(([letter, icons]) => (
-        // https://codesandbox.io/p/sandbox/framer-motion-whileinview-2hbg5?file=%2Fsrc%2FApp.tsx%3A13%2C5&from-embed
-        <FadeIn>
+        <FadeIn key={`section-${letter}`}>
           <section
-            key={letter}
-            id={`content-${letter}`}
-            className="ps-relative ds-flex flow-row-nw gap-xs"
+            id={`${letter}`}
+            className="ps-relative pt-16 ds-flex flow-row-nw gap-xs"
           >
             <Link
-              key={`letter-${letter}`}
-              href={`#content-${letter}`}
+              href={`#${letter}`}
               className="letter-box text-decoration-none ds-flex-center bgc-primary-01 radius-sm"
             >
               <h3 className="ps-sticy color-primary-03">{letter}</h3>
             </Link>
             <div className="flex-bgs ds-grid grid-tpl-col-06 lg:grid-tpl-col-04 sm:grid-tpl-col-02 gap-xs">
               {icons.map((icon, index) => (
-                <Link
+                <button
                   key={`${letter}-${index}`}
-                  href={`/icons/${icon.id}`}
-                  scroll={false}
-                  onClick={() => setState(true)}
+                  type="button"
+                  title={icon.name}
+                  onClick={() => handleOpenDrawer(icon.id)}
                   className="ds-flex-center p-block-04 p-inline-02 bgc-gray-95 radius-sm"
                 >
                   <BvIcon
@@ -55,7 +61,7 @@ const Icons = () => {
                       variant === "light" ? "primary-02" : "primary-01"
                     }`}
                   />
-                </Link>
+                </button>
               ))}
             </div>
           </section>

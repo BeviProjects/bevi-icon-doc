@@ -16,7 +16,7 @@ export const v1_0 = [
   },
   {
     id: "arrowSelectorTool",
-    name: "arrow-selector-tool",
+    name: "Arrow Selector Tool",
     tag: ["arrowSelectorTool", "arrow", "selector", "cursor"],
   },
   {

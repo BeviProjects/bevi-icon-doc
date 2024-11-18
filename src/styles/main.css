@@ -8,12 +8,12 @@ main{
   min-height: 100vh;
   background-color: #fff;
   padding-top: calc(4rem + 2rem);
-  &::before {
+  /* &::before {
     content: "";
     position: fixed;
     inset: 0;
     background: linear-gradient(206.57deg, #d6dbdc, #fff 83.33%);
-  }
+  } */
 }
 
 .bg-black-40{
