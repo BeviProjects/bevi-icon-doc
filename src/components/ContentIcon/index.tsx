@@ -4,12 +4,15 @@ import React, { useEffect, useState } from "react";
 import { BvIcon } from "bevi-icon";
 import { useDrawer } from "@/hooks/useDrawer";
 import { useIconVariant } from "@/hooks/useIconVariant";
-import { SwitchVariant } from "@/components/SwitchVariant";
 import { allIconsSorted } from "@/utils/icons";
 import "./styles.css";
 import { Tooltip } from "../Tooltip";
 import { CopyToClipboard } from "../CopyToClipboard";
 import { Drawer } from "vaul";
+import { AnimatedTabs } from "../SwitchTabs";
+import { tabsVariant, tabsWeight } from "@/utils/tabs";
+import { motion } from "motion/react";
+import { useIconWeight } from "@/hooks/useIconWeight";
 
 type ContentIconProps = {
   iconName: string;
@@ -23,6 +26,7 @@ type IconData = {
 
 export const ContentIcon = ({ iconName }: ContentIconProps) => {
   const { variant } = useIconVariant();
+  const { weight } = useIconWeight();
   const [searchResult, setSearchResult] = useState<IconData | null>(null);
 
   useEffect(() => {
@@ -38,18 +42,31 @@ export const ContentIcon = ({ iconName }: ContentIconProps) => {
         <>
           <div className="w-100 ds-flex flow-row-nw align-start justify-between">
             <CopyToClipboard toCopy={searchResult.id}>
-              <Drawer.Title>{searchResult.name}</Drawer.Title>
+              <h2>{searchResult.name}</h2>
               <Drawer.Description className="ds-none">
                 Icon {searchResult.name}
               </Drawer.Description>
             </CopyToClipboard>
-            <SwitchVariant />
+            <div className="ds-flex flow-row-nw gap-xs">
+              <AnimatedTabs
+                layoutId="drawer-tab-variant"
+                tabs={tabsWeight}
+                type="weight"
+              />
+              <AnimatedTabs
+                layoutId="drawer-tab-weight"
+                tabs={tabsVariant}
+                type="variant"
+                showIcon
+              />
+            </div>
           </div>
           <div className="ds-flex flow-row-nw gap-xl">
-            <div className="viewport ds-flex-center bgc-gray-01 radius-md">
+            <div className="viewport ds-flex-center radius-md">
               <BvIcon
                 name={searchResult.id}
                 variant={variant}
+                weight={weight}
                 className={`icon color-${
                   variant === "light" ? "primary-02" : "primary-01"
                 }`}

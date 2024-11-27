@@ -4,6 +4,7 @@
     --_icon-size: calc(var(--_viewport-size) - 4rem);
     width: var(--_viewport-size);
     height: var(--_viewport-size);
+    box-shadow: 0 0 0 2px var(--bv-gray-95);
 
     & .icon{
       width: var(--_icon-size);

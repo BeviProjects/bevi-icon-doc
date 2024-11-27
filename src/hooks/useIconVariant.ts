@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { IconVariantContext } from "@/contexts/IconVariantContext";
-import type { IconVariantContextType } from "@/types/iconVariant";
+import type { IconVariantContextType } from "@/types/icons";
 
 export const useIconVariant = (): IconVariantContextType => {
   const context = useContext(IconVariantContext);

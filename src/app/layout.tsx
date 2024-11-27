@@ -23,7 +23,7 @@ const RootLayout = ({
   return (
     <html lang="pt-BR">
       {/* <body className={`${nunitoSans.className}`}> */}
-      <body>
+      <body className="bv-scrollbar">
         <Header />
         <NuqsAdapter>{children}</NuqsAdapter>
       </body>

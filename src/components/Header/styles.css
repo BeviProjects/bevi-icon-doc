@@ -1,6 +1,6 @@
 .header{
   & nav{
-    background-color: hsla(0,0%,95%,.95);
+    background-color: hsla(0,0%,100%,.95);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
 
