@@ -1,15 +1,12 @@
 "use client";
 import { ReactNode, useEffect } from "react";
 import { Drawer } from "vaul";
+import { useQueryState } from "nuqs";
 import { DrawerProvider } from "@/contexts/DrawerContext";
 import { IconVariantProvider } from "@/contexts/IconVariantContext";
 import { IconWeightProvider } from "@/contexts/IconWeightContext";
 import { useDrawer } from "@/hooks/useDrawer";
-import { SwitchVariant } from "@/components/SwitchVariant";
-import { useQueryState } from "nuqs";
 import { ContentIcon } from "@/components/ContentIcon";
-import { SwitchWeight } from "@/components/SwitchWeight";
-import { IconWeightContext } from "@/contexts/IconWeightContext";
 
 type IconLayoutProps = {
   children: ReactNode;
