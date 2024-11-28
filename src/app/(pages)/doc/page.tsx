@@ -42,8 +42,8 @@ const Doc = () => {
         </section>
 
         <section>
-          <h3 className="pb-04">Tipos de ícones</h3>
-          <h4>Variantes</h4>
+          <h3 className="pt-10 pb-04">Tipos de ícones</h3>
+          <h4 className="pt-06 pb-02">Variantes</h4>
           <p>
             A biblioteca de ícones da Bevi tem a separação de 4 variantes, são
             eles:
@@ -90,7 +90,7 @@ const Doc = () => {
               <li>Ideal para aplicações pequenas</li>
             </CardIcon>
           </div>
-          <h4>Variantes</h4>
+          <h4 className="pt-10 pb-02">Pesos</h4>
           <p>Também permite alterar o peso de alguns ícones, são eles:</p>
           <div className="ds-grid grid-tpl-col-02 gap-md">
             <CardIcon
