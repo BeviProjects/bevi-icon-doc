@@ -1,6 +1,6 @@
 .content-icon{
   & .viewport{
-    --_viewport-size: 16rem;
+    --_viewport-size: 20rem;
     --_icon-size: calc(var(--_viewport-size) - 4rem);
     width: var(--_viewport-size);
     height: var(--_viewport-size);

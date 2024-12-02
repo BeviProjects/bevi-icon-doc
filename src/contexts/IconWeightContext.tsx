@@ -1,6 +1,7 @@
+"use client";
+import React, { createContext, useState } from "react";
 import { Weights } from "@/types/icons";
 import { IconWeightContextType, IconWeightProviderProps } from "@/types/icons";
-import React, { createContext, useState } from "react";
 
 export const IconWeightContext = createContext<IconWeightContextType>({
   weight: 600,

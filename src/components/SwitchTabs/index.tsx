@@ -1,11 +1,11 @@
 "use client";
-import { motion } from "motion/react";
 import { useEffect, useState } from "react";
-import "./styles.css";
 import { BvIcon } from "bevi-icon";
-import { Variants, Weights } from "@/types/icons";
+import { motion } from "motion/react";
 import { useIconVariant } from "@/hooks/useIconVariant";
 import { useIconWeight } from "@/hooks/useIconWeight";
+import { Variants, Weights } from "@/types/icons";
+import "./styles.css";
 
 export type TabType = {
   id: string;
@@ -15,13 +15,20 @@ export type TabType = {
 };
 
 type TabProps = {
+  bgColor?: string;
   layoutId: string;
   showIcon?: boolean;
   tabs: TabType[];
   type: "variant" | "weight";
 };
 
-export const AnimatedTabs = ({ layoutId, showIcon, tabs, type }: TabProps) => {
+export const AnimatedTabs = ({
+  bgColor = "primary-03",
+  layoutId,
+  showIcon,
+  tabs,
+  type,
+}: TabProps) => {
   const { variant, setVariant } = useIconVariant();
   const { weight, setWeight } = useIconWeight();
   const [activeTab, setActiveTab] = useState(tabs[0].id);
@@ -44,7 +51,9 @@ export const AnimatedTabs = ({ layoutId, showIcon, tabs, type }: TabProps) => {
   };
 
   return (
-    <div className="animated-tabs w-fit p-02 ds-flex-start flow-row-nw gap-xs radius-sm bgc-primary-03">
+    <div
+      className={`animated-tabs w-fit p-02 ds-flex-start flow-row-nw gap-xs radius-sm bgc-${bgColor}`}
+    >
       {tabs.map((tab) => (
         <button
           key={tab.id}

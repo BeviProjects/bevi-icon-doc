@@ -1,6 +1,6 @@
 import React from "react";
-import "./styles.css";
 import Link from "next/link";
+import "./styles.css";
 
 const navItems = [
   {
@@ -66,9 +66,11 @@ export const Header = () => {
             ))}
           </div>
           <div className="flex-bgs ds-flex flow-row-nw justify-end align-center gap-02">
-            <span className="version line-height-none">v1.2</span>
+            <span className="version font-size-sm font-weight-bold line-height-none">
+              v1.3
+            </span>
             <Link
-              href="https://github.com/BeviProjects/BeviIcon-Doc"
+              href="https://github.com/BeviProjects/bevi-icon"
               target="_blank"
               rel="noopener noreferrer"
               className="item ps-relative p-block-04 p-inline-04 text-decoration-none"

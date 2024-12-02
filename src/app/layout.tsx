@@ -1,14 +1,6 @@
 import type { Metadata } from "next";
-// import { Nunito_Sans } from 'next/font/google'
 import "@/styles/main.css";
 import { Header } from "@/components/Header";
-import { NuqsAdapter } from "nuqs/adapters/next/app";
-import { DrawerProvider } from "@/contexts/DrawerContext";
-
-// const nunitoSans = Nunito_Sans({
-//   subsets: ['latin'],
-//   display: 'swap',
-// })
 
 export const metadata: Metadata = {
   title: "Bevi Icon Documentation",
@@ -22,10 +14,9 @@ const RootLayout = ({
 }>) => {
   return (
     <html lang="pt-BR">
-      {/* <body className={`${nunitoSans.className}`}> */}
       <body className="bv-scrollbar">
         <Header />
-        <NuqsAdapter>{children}</NuqsAdapter>
+        {children}
       </body>
     </html>
   );

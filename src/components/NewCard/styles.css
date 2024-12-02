@@ -1,0 +1,10 @@
+.new-card{
+  & a{
+    box-shadow: 0px 0px 0px 2px var(--bv-ciano-70);
+    
+    &:hover{
+      box-shadow: 0px 0px 0px 4px var(--bv-ciano-70);
+
+    }
+  }
+}

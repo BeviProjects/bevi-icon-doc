@@ -9,6 +9,12 @@ export type typeAllIcons = {
   icons: typeIconsVersion[];
 };
 
+export type IconData = {
+  id: string;
+  name: string;
+  tag: string[];
+};
+
 // Variant
 export type Variants = "solid" | "duo" | "dark" | "light";
 

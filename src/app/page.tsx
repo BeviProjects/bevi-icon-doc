@@ -1,6 +1,5 @@
-import { Article } from "@/components/Article";
-import { CopyToClipboard } from "@/components/CopyToClipboard";
 import Link from "next/link";
+import { CopyToClipboard } from "@/components/CopyToClipboard";
 
 const Home = () => {
   return (

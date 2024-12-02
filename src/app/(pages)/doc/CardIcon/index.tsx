@@ -1,6 +1,6 @@
-import { Variants, Weights } from "@/types/icons";
-import { BvIcon } from "bevi-icon";
 import React, { ReactNode } from "react";
+import { BvIcon } from "bevi-icon";
+import { Variants, Weights } from "@/types/icons";
 import "./styles.css";
 
 type CardIconProps = {
@@ -30,7 +30,7 @@ export const CardIcon = ({
           weight={iconWeight}
         />
       </div>
-      <div className="w-100 p-04 radius-sm flex-bgs bgc-gray-95">
+      <div className="w-100 p-block-04 p-inline-06 radius-sm flex-bgs bgc-gray-95">
         <h5 className="p-block-04 title-xs">{title}</h5>
         <p>{description}</p>
 

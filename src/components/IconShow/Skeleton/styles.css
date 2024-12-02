@@ -1,0 +1,19 @@
+.content-icon{
+  & .skeleton-title{
+    width: 16rem;
+    height: 2rem;
+  }
+
+  & .skeleton-viewport{
+    width: 20rem;
+    height: 20rem;
+  }
+  
+  & .skeleton-weight, & .skeleton-variant{
+    height: 2.25rem;
+  }
+
+  & .skeleton-weight{
+    width: 8rem;
+  }
+}

@@ -1,17 +1,18 @@
+"use client";
+import React, { createContext, useState } from "react";
 import { Variants } from "@/types/icons";
 import {
   IconVariantContextType,
   IconVariantProviderProps,
 } from "@/types/icons";
-import React, { createContext, useState } from "react";
 
 export const IconVariantContext = createContext<IconVariantContextType>({
-  variant: "solid",
+  variant: "duo",
   setVariant: () => {},
 });
 
 export const IconVariantProvider = ({ children }: IconVariantProviderProps) => {
-  const [variant, setVariant] = useState<Variants>("solid");
+  const [variant, setVariant] = useState<Variants>("duo");
   return (
     <IconVariantContext.Provider value={{ variant, setVariant }}>
       {children}

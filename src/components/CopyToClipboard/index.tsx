@@ -1,7 +1,7 @@
 "use client";
-import useCopyToClipboard from "@/hooks/useCopyToClipboard";
 import type { ReactNode } from "react";
-import { Tooltip } from "../Tooltip";
+import useCopyToClipboard from "@/hooks/useCopyToClipboard";
+import { Tooltip } from "@/components/Tooltip";
 
 type CopyToClipboardProps = {
   children: ReactNode;
