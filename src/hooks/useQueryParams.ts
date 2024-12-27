@@ -1,54 +1,58 @@
-"use client";
-import { useCallback, useMemo } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+'use client';
+import { useCallback, useMemo } from 'react';
+import { usePathname, useSearchParams } from 'next/navigation';
 
 export function useQueryParams() {
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
+	const pathname = usePathname();
+	const searchParams = useSearchParams();
 
-  // Criar query string
-  const createQueryString = useCallback(
-    (name: string, value: string) => {
-      const params = new URLSearchParams(searchParams);
-      params.set(name, value);
-      return params.toString();
-    },
-    [searchParams]
-  );
+	// Esta função continua a mesma, pois é uma utilidade para criar a query string
+	const createQueryString = useCallback(
+		(name: string, value: string) => {
+			const params = new URLSearchParams(searchParams);
+			params.set(name, value);
+			return params.toString();
+		},
+		[searchParams],
+	);
 
-  // Remover query string
-  const removeQueryString = useCallback(
-    (name: string) => {
-      const params = new URLSearchParams(searchParams);
-      params.delete(name);
-      return params.toString();
-    },
-    [searchParams]
-  );
+	// Esta função continua a mesma, pois é uma utilidade para remover parâmetros
+	const removeQueryString = useCallback(
+		(name: string) => {
+			const params = new URLSearchParams(searchParams);
+			params.delete(name);
+			return params.toString();
+		},
+		[searchParams],
+	);
 
-  // Navegar com nova query
-  const navigateWithQuery = useCallback(
-    (queryName: string, queryValue?: string) => {
-      const newQueryString = queryValue
-        ? createQueryString(queryName, queryValue)
-        : removeQueryString(queryName);
+	// Aqui está a principal mudança - usando history.replaceState
+	const navigateWithQuery = useCallback(
+		(queryName: string, queryValue?: string) => {
+			const newQueryString = queryValue
+				? createQueryString(queryName, queryValue)
+				: removeQueryString(queryName);
 
-      router.push(newQueryString ? `${pathname}?${newQueryString}` : pathname);
-    },
-    [router, pathname, createQueryString, removeQueryString]
-  );
+			const newUrl = newQueryString
+				? `${pathname}?${newQueryString}`
+				: pathname;
 
-  // Processar todos os params
-  const queryParams = useMemo(() => {
-    const params = new URLSearchParams(searchParams);
-    return Object.fromEntries(params.entries());
-  }, [searchParams]);
+			// Usando replaceState para atualizar a URL sem causar rolagem
+			window.history.replaceState(null, '', newUrl);
+		},
+		[pathname, createQueryString, removeQueryString],
+	);
 
-  return {
-    queryParams,
-    createQueryString,
-    removeQueryString,
-    navigateWithQuery,
-  };
+	// O processamento dos parâmetros continua o mesmo
+	const queryParams = useMemo(() => {
+		const params = new URLSearchParams(searchParams);
+		return Object.fromEntries(params.entries());
+	}, [searchParams]);
+
+	return {
+		queryParams,
+		createQueryString,
+		removeQueryString,
+		navigateWithQuery,
+	};
 }
