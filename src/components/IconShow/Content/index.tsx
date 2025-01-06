@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Drawer } from "vaul";
 import { BvIcon } from "bevi-icon";
@@ -11,6 +11,7 @@ import { AnimatedTabs } from "@/components/SwitchTabs";
 import { tabsVariant, tabsWeight } from "@/utils/tabs";
 import "./styles.css";
 import { IconData } from "@/types/icons";
+import { SVGCopy } from "@/components/SVGCopy";
 
 type ContentProps = {
   icon: IconData;
@@ -19,6 +20,7 @@ type ContentProps = {
 export const Content = ({ icon }: ContentProps) => {
   const { variant } = useIconVariant();
   const { weight } = useIconWeight();
+  const [svgString, setSvgString] = useState<string>("");
 
   return (
     <div className="content-icon w-100 ds-flex flow-col-nw gap-md">
@@ -36,7 +38,7 @@ export const Content = ({ icon }: ContentProps) => {
         transition={{ duration: 0.25 }}
         className="ds-flex flow-row-nw gap-xl"
       >
-        <div className="viewport ds-flex-center radius-md">
+        <div className="viewport ps-relative ds-flex-center radius-md">
           <BvIcon
             name={icon.id}
             variant={variant}
@@ -45,6 +47,7 @@ export const Content = ({ icon }: ContentProps) => {
               variant === "light" ? "primary-02" : "primary-01"
             }`}
           />
+          <SVGCopy iconId={icon.id} iconVariant={variant} iconWeight={weight} />
         </div>
         <div className="flex-bgs ds-flex-start flow-col-nw gap-lg">
           <div className="ds-flex flow-row-nw gap-xs">

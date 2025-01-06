@@ -18,7 +18,7 @@ export const Tooltip = ({ children, message }: TooltipProps) => {
 
   return (
     <div
-      className="tooltip ps-relative"
+      className="tooltip ps-relative ds-flex-center"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

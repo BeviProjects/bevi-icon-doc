@@ -1140,7 +1140,7 @@ export const v1_3 = [
 	},
 	{
 		id: 'thunderstorm',
-		name: 'thunderstorm',
+		name: 'Thunderstorm',
 		tag: ['thunderstorm', 'storm', 'weather', 'cloud'],
 	},
 	{
@@ -1192,6 +1192,43 @@ export const v1_3_4 = [
 		tag: ['eye', 'visibility', 'show'],
 	},
 ];
+
+export const specialWeightIcons = {
+	400: [
+		'arrowBack',
+		'arrowForward',
+		'arrowNorthEast',
+		'arrowNorth',
+		'arrowNorthWeast',
+		'arrowSouth',
+		'chevronBack',
+		'chevronDown',
+		'chevronForward',
+		'chevronLeft',
+		'chevronRight',
+		'chevronUp',
+	],
+	600: [
+		'add',
+		'arrowBack',
+		'arrowForward',
+		'arrowNorthEast',
+		'arrowNorth',
+		'arrowNorthWeast',
+		'arrowSouth',
+		'chevronBack',
+		'check',
+		'chevronDown',
+		'chevronDownward',
+		'chevronForward',
+		'chevronLeft',
+		'chevronRight',
+		'chevronUp',
+		'chevronUpward',
+		'close',
+		'remove',
+	],
+};
 
 export const allIconsSorted = [
 	...v1_0,
