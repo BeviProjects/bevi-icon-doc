@@ -1,15 +1,15 @@
-"use client";
+"use client"
 
-import { Suspense } from "react";
+import { Suspense } from "react"
 
 interface ClientBoundaryProps {
-  children: React.ReactNode;
-  fallback?: React.ReactNode;
+	children: React.ReactNode
+	fallback?: React.ReactNode
 }
 
 export function ClientBoundary({
-  children,
-  fallback = <div>Loading...</div>,
+	children,
+	fallback = <div>Loading...</div>,
 }: ClientBoundaryProps) {
-  return <Suspense fallback={fallback}>{children}</Suspense>;
+	return <Suspense fallback={fallback}>{children}</Suspense>
 }

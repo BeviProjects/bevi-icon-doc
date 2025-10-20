@@ -1,14 +1,13 @@
-.animated-tabs{
+.animated-tabs {
+	& .button {
+		all: unset;
+		position: relative;
+		cursor: pointer;
+		padding: 0.25rem 0.5rem;
+		min-height: 1.25rem;
+	}
 
-  & .button{
-    all: unset;
-    position: relative;
-    cursor: pointer;
-    padding: .25rem .5rem;
-    min-height: 1.25rem;
-  }
-
-  & .bubble{
-    box-shadow: 0 0 0 1px var(--bv-ciano-70);
-  }
+	& .bubble {
+		box-shadow: 0 0 0 1px var(--bv-ciano-70);
+	}
 }
