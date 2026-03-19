@@ -7,17 +7,29 @@ import { tabsVariant, tabsWeight } from "@/utils/tabs";
 import { ClientBoundary } from "@/components/ClientBoundary";
 
 const Icons = () => {
-  const groupedIcons = allIconsSorted.reduce((acc, icon) => {
-    const firstLetter = icon.name.charAt(0).toUpperCase();
-    if (!acc[firstLetter]) {
-      acc[firstLetter] = [];
-    }
-    acc[firstLetter].push(icon);
-    return acc;
-  }, {} as Record<string, typeof allIconsSorted>);
+  const groupedIcons = allIconsSorted.reduce(
+    (acc, icon) => {
+      const firstLetter = icon.name.charAt(0).toUpperCase();
+      if (!acc[firstLetter]) {
+        acc[firstLetter] = [];
+      }
+      acc[firstLetter].push(icon);
+      return acc;
+    },
+    {} as Record<string, typeof allIconsSorted>,
+  );
 
   return (
     <>
+      <section className="p-block-16">
+        <div className="bv-container-lg p-block-16">
+          <h1 style={{ textAlign: "center", textDecoration: "underline", color: "#5C0A1D" }}>
+            <Link href="https://bevi-docs.netlify.app/bevi-icon">
+              Acesse agora mesmo a nova versão desse site aqui
+            </Link>
+          </h1>
+        </div>
+      </section>
       <div className="bv-container-lg">
         <section className="ds-flex flow-row-nw justify-between">
           <div></div>
